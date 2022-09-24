@@ -15,12 +15,14 @@ library(tidyverse)
 ```
 
 ## Problem 1
-
-The dataset has 344 rows and 8 columns, including 3 factor variables and 5 numeric variables which are species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, year. The below table shows the first 5 rows of the dataset. The mean flipper length is 200.9152 mm.
 ```{r}
 data("penguins", package = "palmerpenguins")
+```
+
+
+The dataset has `r nrow(penguins)` rows and `r ncol(penguins)`  columns, including 3 factor variables and 5 numeric variables which are `r names(penguins)`. The below table shows the first 5 rows of the dataset. The mean flipper length is `r mean(na.omit(penguins)$flipper_length_mm)` mm.
+```{r}
 head(penguins,5)
-skimr::skim(penguins)
 ```
 ```{r,warning=FALSE}
 ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm,color=species)) +
